@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>task3</title>
+    <style>
+        body {
+            width: 1894px;
+            height: 1470px;
+            margin: auto;
+            background-color: #F8F8F8;
+        }
+        .container {
+            width: 1100px;
+            height: 1470px;
+            margin: auto;
+        }
+        .p-title-box {
+            width: 1100px;
+            padding-top: 12px;
+            padding-bottom: 22px;
+            text-align: center;
+            height: 115px;
+        }
+        .p-title-text {
+            color: #000037;
+            font-family: Helvetica;
+            font-weight: bold;
+            font-size: 47px;
+        }
+        .p-card-group {
+            width: 1100px;
+            height: 970px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .p-card {
+            width: 364px;
+            height: 485px;
+        }
+        .p-card:hover {
+            opacity: 0.5;
+        }
+        .p-card-icon {
+            width: 364px;
+            height: 163px;
+            margin-top: 76px;
+            text-align: center;
+        }
+        .p-card-icon1 {
+            width: 364px;
+            height: 163px;
+            margin-top: 76px;
+            text-align: center;
+        }
+        .p-card-icon img {
+            height: 160px;
+            width: 160px;
+        }
+        .p-card-icon1 img {
+            height: 120px;
+            width: 120px;
+        }
+        .p-card-title {
+            height: 26px;
+            width: 280px;
+            text-align: center;
+            margin-top: 22px;
+            margin: 8px auto;
+        }
+        .p-card-title span {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: Helvetica;
+        }
+        .p-card-text {
+            height: 93px;
+            width: 280px;
+            text-align: center;
+            margin-top: 16px;
+            margin: 0 auto;
+        }
+        .p-card-text span {
+            font-family: Arial, Helvetica;
+            font-size: 15px;
+        }
+        .footer {
+            width: 1100px;
+            height: 270px;
+            margin-top: 70px;
+            background-color: #FFFF70;
+            display: flex;
+            flex-direction: row;
+        }
+        .footer-content {
+            height: 270px;
+            width: 658px;
+        }
+        .footer-img {
+            height: 270px;
+            width: 436px;
+        }
+        .footer-img-icon {
+            height: 69px;
+            width: 436px;
+            margin-top: 136px;
+        }
+        .footer-img-icon img{
+            height:69px;
+            width: 210px;
+            margin-left: 4px;
+        }
+        .footer-content-title {
+            height: 70px;
+            width: 658px;
+            text-align: left;
+            margin-top: 20px;
+        }
+        .footer-content-title span {
+            padding-left: 20px;
+            font-family: Arial, Helvetica;
+            font-size: 47px;
+            font-weight: bold;
+        }
+        .footer-content-text, .footer-content-text2 {
+            height: 90px;
+            width: 658px;
+            margin: 0;
+            padding: 0;
+        }
+        .footer-content-text p {
+            padding-left: 20px;
+            font-family: Arial, Helvetica;
+            font-size: 24px;
+        }
+        .footer-content-text2 p {
+            padding-left: 20px;
+            font-family: Arial, Helvetica;
+            font-size: 19px;
+        }
+        .purple-box {
+            background-color: #8E42FF;
+            text-align: center;
+            border-radius: 4px;
+            height: 4px;
+            width: 10px;
+            color: white;
+        }
+        .purple-box:hover {
+            opacity: 0.7;
+        }
+        @media screen and (max-width:1201px) {
+            body {
+                width: 419px;
+                height: 3195px;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+            }
+            .container {
+                width: 419px;
+                height: 3195px;
+                margin: auto;
+            }
+            .p-title-box {
+                width: 419px;
+                height: 165px;
+                margin: auto;
+            }
+            .p-title-text {
+                font-size: 38px;
+            }
+            .p-card-group {
+                width: 419px;
+                height: 2550px;
+            }
+            .p-card {
+                width: 419px;
+                height: 425px;
+            }
+            .p-card-icon, .p-card-icon1 {
+                width: 419px;
+                height: 190px;
+                margin-top: 46px;
+                text-align: center;
+            }
+            .p-card-icon img, .p-card-icon1 img {
+                width: 190px;
+                height: 190px;
+            }
+            .p-card-text, .p-card-title {
+                width: 419px;
+            }
+            .footer {
+                width: 419px;
+                height: 465px;
+                margin-top: 70px;
+                background-color: #FFFF70;
+                display: flex;
+                flex-direction: column;
+            }
+            .footer-content {
+                height: 270px;
+                width: 419px;
+            }
+            .footer-img {
+                height: 190px;
+                width: 419px;
+            }
+            .footer-content-title {
+                width: 419px;
+                height: 110px;
+                text-align: center;
+                line-height: 32px;
+            }
+            .footer-content-title span {
+                font-size: 56px;
+            }
+            .footer-content-text, .footer-content-text2 {
+                width: 419px;
+                text-align: center;
+            }
+            .footer-content-text p {
+                padding-left: 40px;
+                font-family: Arial, Helvetica;
+                font-size: 24px;
+                margin: 0;
+                padding: 0;
+            }
+            .footer-content-text2 p {
+                font-family: Arial, Helvetica;
+                font-size: 19px;
+            }
+            .footer-img {
+                height: 192px;
+                width: 419px;
+            }
+            .footer-img-icon {
+                height: 192px;
+                width: 419px;
+                margin-top: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .footer-img-icon img{
+                height:69px;
+                width: 210px;
+                margin: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="p-title-box">
+            <span class="p-title-text">We're here to help you get more credit cards to buy more things</span>
+        </div>
+        <div class="p-card-group">
+            <div class="p-card">
+                <div class="p-card-icon">
+                    <img src="./assets/q5_icon1.svg">
+                </div>
+                <div class="p-card-title">
+                    <span>No fee cards</span>
+                </div>
+                <div class="p-card-text">
+                    <span>Say bye bye to card payment fees</span>
+                </div>
+            </div>
+            <div class="p-card">
+                <div class="p-card-icon">
+                    <img src="./assets/q5_icon2.svg">
+                </div>
+                <div class="p-card-title">
+                    <span>Pay however</span>
+                </div>
+                <div class="p-card-text">
+                    <span>Pay with google pay or apple pay</span>
+                </div>
+            </div>
+            <div class="p-card">
+                <div class="p-card-icon">
+                    <img src="./assets/q5_icon3.svg">
+                </div>
+                <div class="p-card-title">
+                    <span>10/10 Interest rates</span>
+                </div>
+                <div class="p-card-text">
+                    <span>Nothing is more exciting given the ecnonmic climate</span>
+                </div>
+            </div>
+            <div class="p-card">
+                <div class="p-card-icon1">
+                    <img src="./assets/q5_icon4.svg">
+                </div>
+                <div class="p-card-title">
+                    <span>Easy to use app</span>
+                </div>
+                <div class="p-card-text">
+                    <span>All of the financial information you need in one place</span>
+                </div>
+            </div>
+            <div class="p-card">
+                <div class="p-card-icon1">
+                    <img src="./assets/q5_icon5.svg">
+                </div>
+                <div class="p-card-title">
+                    <span>Built in calendar</span>
+                </div>
+                <div class="p-card-text">
+                    <span>Built in calendar will help you track your payments</span>
+                </div>
+            </div>  
+            <div class="p-card">
+                <div class="p-card-icon1">
+                    <img src="./assets/q5_icon6.svg">
+                </div>
+                <div class="p-card-title">
+                    <span>AU call centres</span>
+                </div>
+                <div class="p-card-text">
+                    <span>Not that it makes a different as you won't call anyway</span>
+                </div>
+            </div>   
+        </div>
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-content-title">
+                    <span>Get started now!&#128588</span>
+                </div>
+                <div class="footer-content-text">
+                    <p>Join now using our invite code <span class="purple-box">UNSWROX</span> and <strong>get $1.10</strong> after your second purchase.</p>
+                </div>
+                <div class="footer-content-text2">
+                    <p>Offer available for a limited time.</p>
+                </div>
+            </div>
+            <div class="footer-img">
+                <div class="footer-img-icon">
+                    <img src="./assets/app-store.png">
+                    <img src="./assets/google-play.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

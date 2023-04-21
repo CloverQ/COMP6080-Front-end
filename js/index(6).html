@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LurkForWork</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./src/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+    <script src="./src/jquery-3.5.1.js"></script>
+    <!-- 包括所有已编译的插件 -->
+    <script src="./src/bootstrap.min.js"></script>
+    <!-- You can add your styles and scripts here -->
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/provided.css" />
+</head>
+<style>
+    .register {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 20px;
+        border: solid;
+        height: 720px;
+    }
+
+    .login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 20px;
+        border: solid;
+        height: 720px;
+    }
+
+    .jump_register {
+        border-radius: 20px;
+        background-color: blueviolet;
+    }
+
+    .jump_login {
+        border-radius: 20px;
+        background-color: blueviolet;
+    }
+
+    .edit_block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-weight: 400;
+    }
+
+    .submit_profile_btn {
+        display: inline-block;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+        padding: 0.375rem 0.75rem;
+        border: 1px solid transparent;
+        color: #fff;
+        background-color: #0088A9;
+        border-color: #0088A9;
+    }
+
+    #reg_pwd_popup {
+        display: none;
+    }
+
+    #login_popup {
+        display: none;
+    }
+
+    #navigation {
+        height: 100px;
+        font-size: 26px;
+    }
+
+    .navbar-brand {
+        font-size: 26px;
+    }
+
+    #footer_text {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <!-- This is an example app structure, you can modify this as much as you choose -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><strong>Luckforwork</strong></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#">Pricing</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main">
+        <!-- 两次密码不匹配 弹框 -->
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="reg_pwd_popup">
+            <strong>Two passwords do not match!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <!-- 用户名或密码错误 弹框 -->
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="login_popup">
+            <strong id='popup_content'>123455</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <!-- 用户登录界面 -->
+        <div class="login col-lg-12" id="login">
+            <h1>Get start!</h1>
+            <form action="">
+                <div class="mb-4 row">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="login_email" placeholder="name@example.com">
+                    </div>
+                </div>
+                <div class="mb-4 row">
+                    <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" id="login_password" required placeholder="password">
+                    </div>
+                </div>
+                <br>
+                <div class="mb-4 row">
+                    <button type="button" class="btn btn-secondary" id="sign_up">Login</button>
+                </div>
+                <p>
+                    Don't have an account? <button class="jump_register" id="jump_register">Register</button>
+                </p>
+            </form>
+        </div>
+        <!-- 用户注册界面 -->
+        <div class="register col-lg-12" id="register">
+            <h1>Register</h1>
+            <form action="">
+                <div class="mb-4 row">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="reg_email" placeholder="name@example.com">
+                    </div>
+                </div>
+                <div class="mb-4 row">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="reg_name" required>
+                    </div>
+                </div>
+                <div class="mb-4 row">
+                    <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" id="reg_pwd" required>
+                    </div>
+                </div>
+                <div class="mb-4 row">
+                    <label for="inputPassword" class="col-sm-3 col-form-label">Confirm Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" id="reg_cpwd" required>
+                    </div>
+                </div>
+                <div class="mb-4 row">
+                    <button type="button" class="btn btn-secondary" id="btn_reg">Register</button>
+                </div>
+                <p>
+                    Already have an account? <button class="jump_login" id="jump_login">Login</button>
+                </p>
+            </form>
+        </div>
+        <div id="test" style="display: none; width: 600px; height: 600px;background-color: aquamarine;">
+            qweqewqqee
+        </div>
+        <!-- 修改个人信息框 -->
+        <div class="col-lg-4 offset-lg-2">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                edit profile
+            </button>
+            <!-- 模态框 -->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content edit_block">
+                        <!-- 模态框头部 -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Edit Profile</h4>
+                        </div>
+
+                        <!-- 模态框内容 -->
+                        <div class="modal-body">
+                            <form action="">
+                                <div class="mb-4 row">
+                                    <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="new_email"
+                                            placeholder="name@example.com">
+                                    </div>
+                                </div>
+                                <div class="mb-4 row">
+                                    <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" id="new_password" required>
+                                    </div>
+                                </div>
+                                <div class="mb-4 row">
+                                    <label for="staticEmail" class="col-sm-3 col-form-label">Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="new_name" required>
+                                    </div>
+                                </div>
+                                <div class="mb-4 row">
+                                    <input type="file" id="new_img" name="new_img" class="form-control mb-2"
+                                        accept="image/jpg,image/png,image/jpeg"
+                                        placeholder="jpg、png、jpeg format is supported">
+                                    <span class="text-secondary text-opacity-50">
+                                        <i class="fa fa-volume-down">jpg、png、jpeg format is supported</i>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- 模态框底部 -->
+                        <div class="modal-footer">
+                            <button type="submit" class="submit_profile_btn" id="submit_profile_btn">submit</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p id="footer_text">&copy; lurkforwork.com 2022</p>
+    </footer>
+    <script type="module" src="src/main.js"></script>
+</body>
+<script>
+
+</script>
+
+</html>

@@ -1,0 +1,335 @@
+<!-- We are using bootstrap's css framework in static html.
+The modal box is quoted from https://www.runoob.com/bootstrap/bootstrap-modal-plugin.html 
+and its content has been modified. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LurkForWork</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- These 4 files are from bootstrap -->
+    <link href="./src/bootstrap.min.css" rel="stylesheet">
+    <script src="./src/jquery-3.5.1.js"></script>
+    <script src="./src/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/provided.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/global.css" />
+</head>
+
+<body>
+    <!-- This is an example app structure, you can modify this as much as you choose -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-light bg-light " id="navigation" >
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><strong>Lurkforwork</strong></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="#" id="nav_feed">Feed</a>
+                        <a class="nav-link" href="#myModal3" data-bs-toggle="modal">Add job</a>
+                        <!-- <button type="button" style="border: none; background: rgba(0, 0, 0, 0);" data-bs-toggle="modal"
+                            data-bs-target="#myModal3">
+                            Add job
+                        </button> -->
+                        <a class="nav-link" id="nav_profile">Profile</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main">
+        <!-- password not match popup -->
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="reg_pwd_popup">
+            <strong>Two passwords do not match!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <!-- Username or password is incorrect popup -->
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="login_popup">
+            <strong id='popup_content'>123455</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <!-- login page -->
+        <div class="login col-lg-12" id="login">
+            <h1>Get start!</h1>
+            <form action="">
+                <div class="mb-4 row">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="login_email" placeholder="name@example.com">
+                    </div>
+                </div>
+                <div class="mb-4 row">
+                    <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" id="login_password" required placeholder="password">
+                    </div>
+                </div>
+                <br>
+                <div class="mb-4 row">
+                    <button type="button" class="btn btn-secondary" id="sign_up">Login</button>
+                </div>
+                <p>
+                    Don't have an account? <button class="jump_register" id="jump_register">Register</button>
+                </p>
+            </form>
+        </div>
+        <!-- register page-->
+        <div class="register col-lg-12" id="register">
+            <h1>Register</h1>
+            <form action="">
+                <div class="mb-4 row">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="reg_email" placeholder="name@example.com">
+                    </div>
+                </div>
+                <div class="mb-4 row">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="reg_name" required>
+                    </div>
+                </div>
+                <div class="mb-4 row">
+                    <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" id="reg_pwd" required>
+                    </div>
+                </div>
+                <div class="mb-4 row">
+                    <label for="inputPassword" class="col-sm-3 col-form-label">Confirm Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" id="reg_cpwd" required>
+                    </div>
+                </div>
+                <div class="mb-4 row">
+                    <button type="button" class="btn btn-secondary" id="btn_reg">Register</button>
+                </div>
+                <p>
+                    Already have an account? <button class="jump_login" id="jump_login">Login</button>
+                </p>
+            </form>
+        </div>
+        <!-- Feed page -->
+        <div id="feed_main" class="col-lg-10 col-md-10 col-sm-10 offset-lg-1 offset-md-1 offset-sm-1">
+            <form class="col-lg-6 col-md-6 col-sm-6" style="margin: 10px; display: none; align-items: center;"
+                id="search_block">
+                <span class="input-group-text" id="search_icon"><i class="bi bi-search"></i></span>
+                <input type="search" class="form-control" placeholder="Please enter email to follow users.." aria-label="Search" id="search">
+            </form>
+            <!-- This part of the html content is loaded using js -->
+            <div id="feed" class="col-lg-12 col-md-12 col-sm-12">
+
+            </div>
+        </div>
+        <!-- Add job page -->
+        <div class="modal" id="myModal3">
+            <div class="modal-dialog">
+                <div class="modal-content add_job">
+                    <div class="new_job_header">
+                        <h4 class="modal-title">Add New Job</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="mb-4 row">
+                                <label for="staticEmail" class="col-sm-3 col-form-label">Title:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="new_title"
+                                        placeholder="name@example.com">
+                                </div>
+                            </div>
+                            <div class="mb-4 row">
+                                <input type="file" id="new_job_img" name="new_img" class="form-control mb-2"
+                                    accept="image/jpg,image/png,image/jpeg"
+                                    placeholder="jpg、png、jpeg format is supported">
+                                <span class="text-secondary text-opacity-50">
+                                    <i class="fa fa-volume-down">jpg、png、jpeg format is supported</i>
+                                </span>
+                            </div>
+                            <div class="mb-4 row">
+                                <label for="inputPassword" class="col-sm-3 col-form-label">Start Data:</label>
+                                <div class="col-sm-9">
+                                    <input type="datetime" class="form-control" id="new_start_data" required>
+                                </div>
+                            </div>
+                            <div class="mb-4 row">
+                                <label for="staticEmail" class="col-sm-3 col-form-label">Description:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="new_des" required>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="submit_profile_btn" id="submit_newJob_btn"
+                            data-bs-dismiss="modal">submit</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Update job -->
+        <div id="update_job" class="col-lg-4 offset-lg-2" style="display: flex;">
+            <div class="modal" id="myModal4">
+                <div class="modal-dialog">
+                    <div class="modal-content add_job">
+                        <div class="new_job_header">
+                            <h4 class="modal-title">Update Job</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="">
+                                <div class="mb-4 row">
+                                    <label for="staticEmail" class="col-sm-3 col-form-label">Title:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="update_title"
+                                            placeholder="name@example.com">
+                                    </div>
+                                </div>
+                                <div class="mb-4 row">
+                                    <input type="file" id="update_job_img" name="new_img" class="form-control mb-2"
+                                        accept="image/jpg,image/png,image/jpeg"
+                                        placeholder="jpg、png、jpeg format is supported">
+                                    <span class="text-secondary text-opacity-50">
+                                        <i class="fa fa-volume-down">jpg、png、jpeg format is supported</i>
+                                    </span>
+                                </div>
+                                <div class="mb-4 row">
+                                    <label for="inputPassword" class="col-sm-3 col-form-label">Start Data:</label>
+                                    <div class="col-sm-9">
+                                        <input type="datetime" class="form-control" id="update_start_data" required>
+                                    </div>
+                                </div>
+                                <div class="mb-4 row">
+                                    <label for="staticEmail" class="col-sm-3 col-form-label">Description:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="update_des" required>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="submit_profile_btn" data-bs-dismiss="modal"
+                                id="update_job_btn">submit</button>
+                            <button id="cancel_brn" type="button" class="btn btn-danger"
+                                data-bs-dismiss="modal">cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- User Profile -->
+        <div class="register col-lg-12" id="profile">
+            <div class="card col-lg-10 col-md-10 col-sm-10">
+                <div class="card-body col-lg-12 col-md-12 col-sm-12">
+                    <!-- Update profile -->
+                    <div class="col-lg-6">
+                        <img src="..." class="img-thumbnail" id="c_img" alt="..." style="width: 100px; height: 100px;">
+                        <h5 class="card-title" id="c_name">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted" id="c_uid">Card subtitle</h6>
+                        <p class="card-text" id="c_email">Some quick example text to build on the card title and make up
+                            the
+                            bulk of the card's content.</p>
+                        <button id="c_btn" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#myModal" style="background-color: #FE542D;">
+                            Followers
+                        </button>
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <strong>Followers:</strong>
+                                        <div id="flr_list"></div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger"
+                                            data-bs-dismiss="modal">cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- follow or unfollow -->
+                        <button id="flr_btn" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            style="background-color: #FE542D; display: none; margin-top: 5px;">
+                            Follow
+                        </button>
+                    </div>
+                    <div class="col-lg-3 offset-lg-3">
+                        <button id="edit_pro" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#myModal1">
+                            edit profile
+                        </button>
+                        <div class="modal" id="myModal1">
+                            <div class="modal-dialog">
+                                <div class="modal-content edit_block">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Edit Profile</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="">
+                                            <div class="mb-4 row">
+                                                <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="new_email"
+                                                        placeholder="name@example.com">
+                                                </div>
+                                            </div>
+                                            <div class="mb-4 row">
+                                                <label for="inputPassword"
+                                                    class="col-sm-3 col-form-label">Password</label>
+                                                <div class="col-sm-9">
+                                                    <input type="password" class="form-control" id="new_password"
+                                                        required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4 row">
+                                                <label for="staticEmail" class="col-sm-3 col-form-label">Name</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="new_name" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4 row">
+                                                <input type="file" id="new_img" name="new_img" class="form-control mb-2"
+                                                    accept="image/jpg,image/png,image/jpeg"
+                                                    placeholder="jpg、png、jpeg format is supported">
+                                                <span class="text-secondary text-opacity-50">
+                                                    <i class="fa fa-volume-down">jpg、png、jpeg format is supported</i>
+                                                </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="submit_profile_btn" id="submit_profile_btn"
+                                            data-bs-dismiss="modal">submit</button>
+                                        <button type="button" class="btn btn-danger"
+                                            data-bs-dismiss="modal">cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- User Profile - job -->
+            <!-- This part of the html content is loaded using js -->
+            <div id="user_feed">
+
+            </div>
+        </div>
+    </main>
+    <script type="module" src="src/main.js"></script>
+</body>
+<script>
+
+</script>
+
+</html>

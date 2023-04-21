@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+    <head>
+        <title>task1</title>
+        <script type="text/javascript" src="index.js" ></script>
+    </head>
+    <body>
+        <form name="input_form">
+            <table border="1px">
+                <tr>
+                    <td>Street Name</td>
+                    <td>
+                        <input type="text" id="street" name="invalid" oninput="check_all()">
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Suburb</td>
+                    <td>
+                        <input type="text" id="suburb" name="invalid" oninput="check_all()">
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Postcode</td>
+                    <td>
+                        <input type="text" id="postcode" name="invalid" oninput="check_all()">
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date of birth</td>
+                    <td>
+                        <input type="text" id="birth" name="invalid" oninput="check_all()">
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Building type</td>
+                    <td>
+                        <select id="building-type" onchange="check_all()">
+                            <option value="Apartment" selected>Apartment</option>
+                            <option value="House">House</option>
+                        </select>
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Features</td>
+                    <td>
+                        <div onclick="check_all()">
+                            <input type="checkbox" value="Headting" class="check">Headting<br>
+                            <input type="checkbox" value="AirConditioning" class="check">AirConditioning<br>
+                            <input type="checkbox" value="Pool" class="check">Pool<br>
+                            <input type="checkbox" value="Sandpit" class="check">Sandpit<br>
+                            <button type="button" id="all" onclick="select_all()" name = "select">Select All</button><br>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <br/>
+        <button id="reset" onclick="reset_form()">Reset</button>
+        <br/><br/>
+        <div id="output">
+            <textarea id="output-text" rows="8" cols="30"></textarea>
+        </div>
+    </body>
+</html>
